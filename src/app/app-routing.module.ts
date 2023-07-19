@@ -11,10 +11,10 @@ import { DeviceDetailsComponent } from './devicedetails/devicedetails.component'
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'sign-up', component: SignUpComponent},
-  {path: 'account', component: AccountComponent},
-  {path: 'devices', component: DevicesComponent},
-  {path: 'device-registration', component: DeviceRegistrationComponent},
-  {path: 'devicedetails/:fobSN', component: DeviceDetailsComponent},
+  {path: ':acctID/account', component: AccountComponent},
+  {path: ':acctID/devices', component: DevicesComponent},
+  {path: ':acctID/devices/device-registration', component: DeviceRegistrationComponent},
+  {path: ':acctID/devices/devicedetails/:fobSN', component: DeviceDetailsComponent},
   {path: 'nav-bar', component: NavComponent},
   {path: '', redirectTo:'login', pathMatch: 'full'}
 ];

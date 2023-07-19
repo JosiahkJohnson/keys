@@ -4,7 +4,7 @@ import * as Realm from "realm-web";
 const id = 'wmk_sync-kmfbs';
 const wmk_config = {id};
 export const newSyncApp = new Realm.App(wmk_config);
-export const syncApp = Realm.getApp(id);
+export const syncApp = Realm.App.getApp(id);
 
 export type keyFob = {
   _id?: Realm.BSON.ObjectId;
@@ -147,5 +147,9 @@ export class DataModelService{
     getFob(fobId: string){
         const fob = syncApp.currentUser?.callFunction("getFob", fobId);
         return fob;
+    }
+    addDevice(deviceName: string, model: string, serialNumber: string){
+      const newDevice = syncApp.currentUser?.callFunction("addDevice", deviceName, model, serialNumber);
+      return newDevice;
     }
 }

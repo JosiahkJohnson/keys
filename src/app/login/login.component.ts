@@ -35,7 +35,7 @@ export class LoginComponent {
 
     const userStatus = syncApp.currentUser?.isLoggedIn;
     if(userStatus === true){
-      this.router.navigate(['../account'])
+      this.router.navigate(['../' + user.id + '/devices']);
     }else{
       alert("Sign in failed.");
     }

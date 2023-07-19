@@ -1,27 +1,32 @@
 <nav-bar></nav-bar>
 <div class="container">
-    <div class="fh row align-items-center justify-content-center">
-        <div class="form-container">
-            <!--container that will hold the dynamically created device items-->
-            <div class = "device-container container-md align-items-center clearfix">
-            <!--dynamically added items here-->
-            <!--
-
-                This is basically how the javascript should add things to the container using bootstrap's grid system
-                each row is another row of devices
-                each row can hold four devices
-                each device is a col
-                after four cols in a row, another row starts.
-
-                <div class="row">
-                <div class="device bg-primary col"></div>
-                <div class="device bg-primary col"></div>
-                <div class="device bg-primary col"></div>
-                <div class="device bg-primary col"></div>
+    <div class="row">
+        <div class="std-container">
+            <div class="m-3 text-center">
+                <h2>Registered Devices</h2>
             </div>
-
-            -->
-        
+            <div class="row">
+                <div *ngFor="let fob of userFobs" class="col-sm-12 col-md-6 col-lg-3 p-2">
+                    <a [routerLink]="['devicedetails', fob.serialNumber]" class="deviceLink">
+                    <div class="device">
+                        <p class="m-0"><span class="fw-bold">Device Name: </span>
+                        <span>{{fob.deviceName}}</span></p>    
+                        <p class="m-0"><span class="fw-bold">Model: </span>
+                        <span>{{fob.model}}</span></p>    
+                        <p class="m-0"><span class="fw-bold">Serial Number: </span>
+                        <span>{{fob.serialNumber}}</span></p>    
+                    </div>
+                    </a>
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-3 p-2">
+                    <a routerLink="device-registration" class="deviceLink">
+                        <div class="device d-flex justify-content-center align-items-center">
+                            <span>
+                                <i class="fa-solid fa-plus"></i>
+                            </span>
+                        </div>
+                    </a>
+                </div>
             </div>
         </div>
     </div>

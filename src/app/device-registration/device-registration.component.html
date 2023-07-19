@@ -1,1 +1,49 @@
-<p>device-registration works!</p>
+<nav-bar></nav-bar>
+<div class="container">
+    <div class="row align-items-center justify-content-center">
+        <div class="p-2 col-lg-6 col-md-12 short-container"> 
+            <div class="p-2 h-100 row justify-content-center align-items-center" id="devRegContainer">
+                <div class="align-self-start">
+                    <h2>Device Registration</h2>
+                    <form id="deviceRegistration" (ngSubmit)="registerDevice()">
+                        <div class="d-flex align-items-center form-floating mb-3">
+                            <!--Device Name Input-->
+                            <input [formControl]="deviceName" type="text" id="reg_name_txt" class="form-control" placeholder="Device Name" minlength="3" required>
+                            <label class="form-label" for="reg_name_txt" id="reg_name_lbl">Device Name</label>
+                        </div>
+                        <div *ngIf="deviceName.invalid && (deviceName.touched || deviceName.dirty)" class="alert alert-danger" role="alert">
+                            <span *ngIf="deviceName.errors?.['required']">Device name required.</span>
+                            <span *ngIf="deviceName.errors?.['minlength']">Device name must be at least 3 characters.</span>
+                        </div>
+                        <div class="d-flex align-items-center form-floating mb-3">
+                            <!--Serial Number Input-->
+                            <input [formControl]="serialNumber" type="text" id="reg_sn_txt" class="form-control" placeholder="Serial Number" maxlength="12" required>
+                            <label class="form-label" for="reg_sn_txt" id="reg_sn_lbl">Device Serial Number</label>
+                        </div>
+                        <div *ngIf="serialNumber.invalid && (serialNumber.touched || serialNumber.dirty)" class="alert alert-danger" role="alert">
+                            <span *ngIf="serialNumber.errors?.['required']">Serial number required.</span>
+                            <span *ngIf="serialNumber.errors?.['validSN']">Serial number must start with "WMK" and contain 10 digits.</span>
+                        </div>
+                        <div class="d-flex align-items-center form-floating mb-3">
+                            <!--Model Select-->
+                            <select [formControl]="model" class="form-select" aria-label="Choose Model">
+                                <option selected disabled>Choose Model</option>
+                                <option value="KF010">KF010</option>
+                                <option value="KF020">KF020</option>
+                                <option value="KF030">KF030</option>
+                              </select>
+                            <label class="form-label" for="reg_model" id="reg_model_lbl">Model Number</label>
+                        </div>
+                        <div *ngIf="model.errors?.['required'] && (model.touched || model.dirty)" class="alert alert-danger" role="alert">
+                            <span>Model required.</span>
+                        </div>
+                        <div class="d-grid">
+                            <!--Submit button-->
+                            <input class="btn btn-primary" type="submit" value="Register" [disabled]="deviceName.invalid || serialNumber.invalid || model.invalid">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>       
+</div>

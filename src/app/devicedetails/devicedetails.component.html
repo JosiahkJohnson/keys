@@ -1,5 +1,5 @@
 <nav-bar></nav-bar>
-<div class="container">
+<div class="container-md">
     <div class="row align-items-center justify-content-center">
         <div class="std-container">
             <div class="m-3 text-center">
@@ -17,12 +17,12 @@
                             <h3>{{userFobs.deviceName}}</h3> 
                         </div>
                     </div>
-                    <div class="row col-8">
-                    <div class="col-6 m-auto">
+                    <div class="row col-lg-8 col-md-12">
+                    <div class="col-md-6 col-sm-12 m-auto">
                         <h3>Model</h3>
                         <p>{{userFobs.model}}</p>   
                     </div>
-                    <div class="col-6 m-auto">
+                    <div class="col-md-6 col-sm-12 m-auto">
                         <h3>Serial Number</h3> 
                         <p>{{userFobs.serialNumber}}</p>
                     </div>
@@ -30,14 +30,13 @@
                 </div>
                 <hr>
             </div>
-            <div class="row-mrl-0 col-12">
+            <div class="row col-12">
                 <h3>Location History</h3>
             </div>
-            <div class="row col-12">
+            <div class="row-mrl-0 col-12 table-responsive">
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th scope="col">#</th>
                             <th scope="col">Latitude</th>
                             <th scope="col">Longitude</th>
                             <th scope="col">Street Address</th>
@@ -45,11 +44,11 @@
                             <th scope="col">State</th>
                             <th scope="col">Postal Code</th>
                             <th scope="col">Country</th>
+                            <th scope="col">Map</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let history of locationHistoryArray">
-                            <th scope="row"></th>
+                        <tr *ngFor="let history of locationHistoryArray, let indexOfElement=index">
                             <td>{{history.lat}}</td>
                             <td>{{history.lon}}</td>
                             <td>{{history.address.streetAddress}}</td>
@@ -57,7 +56,7 @@
                             <td>{{history.address.state}}</td>
                             <td>{{history.address.postcode}}</td>
                             <td>{{history.address.country}}</td>
-                            <td><img src="https://maps.locationiq.com/v3/staticmap?key={{apiKey}}&center={{history.lat}},{{history.lon}}&markers=icon:large-red-cutout|{{history.lat}},{{history.lon}}" class="img-thumbnail" /></td>
+                            <td><img src="https://maps.locationiq.com/v3/staticmap?key={{apiKey}}&center={{history.lat}},{{history.lon}}&markers=icon:large-red-cutout|{{history.lat}},{{history.lon}}" class="img-thumbnail" #imgRef id="{{indexOfElement}}" alt="Location History {{indexOfElement}}" (click)="openModal(imgRef)"/></td>
                         </tr>
                     </tbody>
                 </table>

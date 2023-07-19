@@ -1,10 +1,10 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 import { ServiceModule } from './services/services.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,6 +15,7 @@ import { AccountComponent } from './account/account.component';
 import { DevicesComponent } from './devices/devices.component';
 import { DeviceDetailsComponent } from './devicedetails/devicedetails.component';
 import { DeviceRegistrationComponent } from './device-registration/device-registration.component';
+import { MdbModalService } from 'mdb-angular-ui-kit/modal';
 
 @NgModule({
   declarations: [
@@ -31,13 +32,15 @@ import { DeviceRegistrationComponent } from './device-registration/device-regist
     BrowserModule,
     MaterialModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     ServiceModule
   ],
-  providers: [Title],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
+  providers: [Title, MdbModalService],
   bootstrap: [AppComponent]
 })
 
-export class AppModule { }
+export class AppModule {}

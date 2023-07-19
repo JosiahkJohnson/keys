@@ -1,13 +1,17 @@
-<h1 mat-dialog-title>An error has occurred!</h1>
-<div mat-dialog-content>
-  <p *ngIf="data.status">
-    <b>Status Code: {{ data.status }}</b>
-  </p>
-  <p>Something went wrong!</p>
-  <p class="error-message">
-    {{ data.message }}
-  </p>
-</div>
-<div mat-dialog-actions>
-  <button mat-raised-button mat-dialog-close color="primary">Close</button>
+<div class="container">
+  <div class="row">
+    <h1>An error has occurred!</h1>
+  </div>
+  <div class="row">
+    <p *ngIf="data.status">
+      <b>Status Code: {{ data.status }}</b>
+    </p>
+    <p>Something went wrong!</p>
+    <p class="error-message">
+      {{ data.message }}
+    </p>
+  </div>
+  <div class="row">
+      <button type="button" aria-label="Close" class="btn btn-primary" (click)="Close()">Close</button>
+  </div>
 </div>

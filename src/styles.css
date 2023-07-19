@@ -7,10 +7,13 @@
 body{
     background-color: #7CC3E7;
 }
+.navbar{
+    background-color: #ffffff;
+}
 a{
     color: #2B3BAD;
 }
-a:hover, a:visited{
+a:hover{
     color: #111845;
 }
 h2,h3,h4,h5{
@@ -24,6 +27,7 @@ h3{
 .fh{
     height: 100vh;
 }
+
 .form-container{
     height:80vh;    
     background-color: #ffffff;
@@ -32,6 +36,13 @@ h3{
 }
 .std-container{
     min-height:85vh;   
+    margin-top: 2.5vh;
+    background-color: #ffffff;
+    border: 3px solid #2B3BAD;
+    border-radius: 1em;
+}
+.short-container{
+    height: auto;
     margin-top: 2.5vh;
     background-color: #ffffff;
     border: 3px solid #2B3BAD;
@@ -92,7 +103,11 @@ h3{
     background-color: #111845;
 }
 .super-logo{
-    width: 60%;
+    width: 50%;
+    margin-bottom: 0.5em;
+}
+.nav-logo{
+    width: 40%;
 }
 html, body { 
     height: 100%;
@@ -101,4 +116,126 @@ body {
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
     font-size: larger;
+}
+.modal{
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+}
+.modal-dialog{
+    max-width: 100%;
+    width: auto !important;
+    display: inline-block;
+}
+.device{
+    border: 3px solid #2B3BAD;
+    background-color: rgb(123, 133, 167, .5);
+    padding: .25rem;
+    border-radius: 0.375rem;
+    height: 100%;
+}
+.deviceLink{
+    text-decoration: none;
+}
+.form-label{
+    margin: 0;
+    padding: 1px 24px;
+    font-size: medium;
+}
+.modalMap{
+    width: 100%;
+}
+#navSect2{
+    width: 100%;
+}
+/*Small Screen Max-Width: 540px*/
+@media screen and (max-width: 540px){
+    .super-logo{
+        width: 80%;
+    }
+
+    .form-container{    
+        border: none;
+        border-radius: 0;
+        padding: 0;
+        margin: 0;
+    }
+    .std-container{
+        border: none;
+        border-radius: 0;
+    }
+    .short-container{
+        border: none;
+        border-radius: 0;
+        margin-top: 0.25em;
+    }       
+    #signupContainer.shadow-lg, #loginContainer.shadow-lg{
+        box-shadow: none !important;
+    }
+    #signupContainer.shadow-lg div, #loginContainer.shadow-lg div{
+        margin: 0;
+    }
+    .nav-logo{
+        width: 60%;
+    }
+    a.navbar-brand{
+        width: 50%;
+    }
+    #devRegContainer{
+        margin-right: 0;
+        margin-left: 0;
+    }
+    .user-icon{
+        background-color: #7B85A7;
+        height: 5rem;
+        width: 5rem;
+    }
+    .user-icon-position{
+        color: #ffffff;
+        font-size: 40px;
+    }
+}
+/*Small Screen Max-Height: 540px*/
+@media screen and (max-height: 540px) and (orientation: landscape){
+    .form-container{    
+        border: none;
+        border-radius: 0;
+        padding: 0;
+        margin: 0;
+        height: 90vh;
+    }
+    .std-container{
+        border: none;
+        border-radius: 0;
+    }
+    .short-container{
+        border: none;
+        border-radius: 0;
+        margin-top: 0.25em;
+        padding: 0 !important;
+    }    
+    #signupContainer.shadow-lg, #loginContainer.shadow-lg{
+        box-shadow: none !important;
+    }
+    #signupContainer.shadow-lg div, #loginContainer.shadow-lg div{
+        margin: 0;
+    }   
+    .super-logo{
+        width: 40%;
+    }
+    .user-icon{
+        background-color: #7B85A7;
+        height: 5rem;
+        width: 5rem;
+    }
+    .user-icon-position{
+        color: #ffffff;
+        font-size: 40px;
+    }
+}
+
+@media screen and (max-width:950px) and (max-height: 500px) and (orientation: landscape) {
+    .container-md {
+        max-width: 100% !important;
+    }
 }

@@ -1,15 +1,18 @@
 import { CommonModule } from "@angular/common";
 import { HTTP_INTERCEPTORS } from "@angular/common/http";
-import { ErrorHandler, NgModule } from "@angular/core";
+import { ErrorHandler, NgModule, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 import { GlobalErrorHandler, GlobalHttpInterceptorService } from "./global.error.service";
 import { ErrorDialogComponent } from "./error-dialog/error-dialog.component";
 import { ErrorDialogService } from "./error-dialog/error-dialog.service";
 import { DataModelService } from "./datamodel.service";
+import { ModalComponent } from './modal/modal.component';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { CustomValidatorsDirective } from '../custom-validators.directive';
 
 @NgModule({
-    declarations: [ErrorDialogComponent],
+    declarations: [ErrorDialogComponent, ModalComponent, CustomValidatorsDirective],
     imports: [CommonModule],
-    exports: [ErrorDialogComponent],
+    exports: [ErrorDialogComponent, ModalComponent],
     providers: [
         {
             provide: ErrorHandler, 
@@ -21,8 +24,12 @@ import { DataModelService } from "./datamodel.service";
             multi: true
         },
         ErrorDialogService,
-        DataModelService
-    ]
+        DataModelService,
+        ModalComponent,
+        BrowserAnimationsModule,
+        CustomValidatorsDirective
+    ],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 
 export class ServiceModule{};

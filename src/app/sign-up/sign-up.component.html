@@ -1,32 +1,45 @@
 <div class="container">
     <div class="fh row align-items-center justify-content-center">
-        <div class="p-2 col-lg-6 col-md-12 form-container shadow-lg"> 
+        <div class="p-2 col-lg-6 col-md-12 form-container shadow-lg" id="signupContainer"> 
             <div class="p-2 h-100 row justify-content-center align-items-center">
                 <div class="text-center">
                     <!--Form Logo-->
-                    <img src="./assets/images/wmk_logo.svg" class="super-logo">
+                    <img src="./assets/images/wmk_logo.svg" class="super-logo" alt="Where's My Keys logo">
                 </div>
                 <div class="align-self-start">
                     <h2>Get Started!</h2>
-                    <form id="signup_form" action="">
-                        <div class="d-flex align-items-center form-floating mb-3">
+                    <form [formGroup]="signupForm" id="signupForm" (ngSubmit)="registerUser(signupForm.get('signupEmail')?.value,signupForm.get('confrimPassword')?.value)">
+                        <div class="d-flex align-items-center form-floating mb-1">
                             <!--Email Address Input-->
-                            <input type="email" id="signup_email" class="form-control" placeholder="Email Address">
-                            <label class="form-label" for="email" id="signup_email_lbl">Enter Email Address</label>
+                            <input formControlName="signupEmail" type="email" id="signupEmail" class="form-control" placeholder="Email Address">
+                            <label class="form-label" for="signupEmail" id="signup_email_lbl">Enter Email Address</label>
                         </div>
-                        <div class="d-flex align-items-center form-floating mb-3">
-                            <!--Password Input-->
-                            <input type="password" id="create_password" class="form-control" placeholder="Password">
-                            <label class="form-label" for="create_password" id="create_password_lbl">Create Password</label>
+                        <div [ngClass]="signupForm.get('signupEmail')?.invalid && (signupForm.get('signupEmail')?.touched || signupForm.get('signupEmail')?.dirty) ? 'is-invalid' : ''" class="row">
+                            <label [ngClass]="signupForm.get('signupEmail')?.hasError('required') || signupForm.get('signupEmail')?.hasError('email') ? 'text-danger' : 'text-success'" class="form-label">Please enter a valid email.</label>
                         </div>
-                        <div class="d-flex align-items-center form-floating mb-3">
+                        <div class="d-flex align-items-center form-floating mb-1 mt-1">
                             <!--Password Input-->
-                            <input type="password" id="confirm_password" class="form-control" placeholder="Password">
-                            <label class="form-label" for="confirm_password" id="confirm_password_lbl">Confirm Password</label>
+                            <input formControlName="password" type="password" id="password" class="form-control" placeholder="Password">
+                            <label class="form-label" for="password" id="create_password_lbl">Create Password</label>
+                        </div>
+                        <div [ngClass]="signupForm.get('password')?.invalid && (signupForm.get('password')?.touched || signupForm.get('password')?.dirty) ? 'is-invalid': ''" class="row">
+                            <label [ngClass]="signupForm.get('password')?.hasError('required') || signupForm.get('password')?.hasError('minlength') ? 'text-danger': 'text-success'" class="form-label">Password must be a minimum of 8 characters.</label>
+                            <label [ngClass]="signupForm.get('password')?.hasError('required') || signupForm.get('password')?.hasError('hasNumber') ? 'text-danger': 'text-success'" class="form-label">Password requires at least 1 number.</label>
+                            <label [ngClass]="signupForm.get('password')?.hasError('required') || signupForm.get('password')?.hasError('hasUppercase') ? 'text-danger': 'text-success'" class="form-label">Password requires at least 1 uppercase letter.</label>
+                            <label [ngClass]="signupForm.get('password')?.hasError('required') || signupForm.get('password')?.hasError('hasLowercase') ? 'text-danger': 'text-success'" class="form-label">Password requires at least 1 lowercase letter.</label>
+                            <label [ngClass]="signupForm.get('password')?.hasError('required') || signupForm.get('password')?.hasError('hasSpecialCharacter') ? 'text-danger': 'text-success'" class="form-label">Password requires at least 1 special character.</label>
+                        </div>
+                        <div class="d-flex align-items-center form-floating mb-1 mt-1">
+                            <!--Password Input-->
+                            <input formControlName="confirmPassword" type="password" id="confirmPassword" class="form-control" placeholder="Confirm Password">
+                            <label class="form-label" for="confirmPassword" id="confirm_password_lbl">Confirm Password</label>
+                        </div>
+                        <div [ngClass]="signupForm.get('confirmPassword')?.invalid && (signupForm.get('confirmPassword')?.touched || signupForm.get('confirmPassword')?.dirty) ? 'is-invalid' : ''" class="row">
+                            <label [ngClass]="signupForm.get('confirmPassword')?.hasError('required') || signupForm.get('confirmPassword')?.hasError('NoPasswordMatch') ? 'text-danger': 'text-success'" class="form-label">Passwords must match.</label>
                         </div>
                         <div class="d-grid">
                             <!--Submit button-->
-                            <input class="btn btn-primary" type="submit" value="Sign Up">
+                            <input class="btn btn-primary mt-2" type="submit" value="Sign Up" [disabled]="signupForm.get('signupEmail')?.invalid || signupForm.get('password')?.invalid || signupForm.get('confirmPassword')?.invalid">
                             <span class="form-text text-center">Already have an account? <a href="/" >Sign in</a></span>
                         </div>
                     </form>

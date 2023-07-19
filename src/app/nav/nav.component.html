@@ -1,9 +1,9 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary" id="nav">
+<nav class="navbar navbar-expand-lg" id="nav">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">
-            <img src="/assets/images/wmk_logo.svg" class="super-logo">
+        <a class="navbar-brand" href="{{navlink[0].path}}">
+            <img src="/assets/images/wmk_logo.svg" class="nav-logo" alt="Where's My Keys Logo">
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <button aria-label="mobile collapse" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
@@ -12,6 +12,10 @@
                 <a class="nav-link" href="{{link.path}}">{{link.name}}</a>
             </li>
         </ul>
+        <div class="d-flex justify-content-end" id="navSect2">
+            <button class="btn btn-secondary" type="button" (click)="logout()">Sign Out</button>
+        </div>
+        
     </div>
 </div>
 </nav>
